@@ -188,4 +188,4 @@ Using Docker Compose:
 * For a full distributed Hadoop cluster (one NameNode + multiple DataNodes across machines), consider **Docker Compose** or **Kubernetes**.
 
 ---
-### Made with ❤️ by Ronnie Allen
+### Made with ❤️ by MSG Community
