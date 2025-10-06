@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  hadoop:
+    image: ronnieallen/myhadoop
+    container_name: hadoop
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+      - "9864:9864"
+    volumes:
+      - ./data:/data
+      - hadoop_namenode:/hadoop/dfs/name
+      - hadoop_datanode:/hadoop/dfs/data
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode:

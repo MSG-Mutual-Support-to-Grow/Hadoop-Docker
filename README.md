@@ -48,12 +48,20 @@ Then proceed to the Quick Start section below.
 
 2. **Run the container**
 
+   Using Docker run:
+
    ```bash
    docker run -d --name hadoop \
      -p 9870:9870 -p 9000:9000 -p 9864:9864 \
      -v hadoop_namenode:/hadoop/dfs/name \
      -v hadoop_datanode:/hadoop/dfs/data \
      ronnieallen/myhadoop
+   ```
+
+   Or using Docker Compose (simpler):
+
+   ```bash
+   docker-compose up -d
    ```
 
 3. **Access Hadoop UIs**
@@ -109,7 +117,41 @@ Now you can use Hadoop commands:
 
 ---
 
+## 💾 Transferring Files to HDFS
+
+To upload files from your local machine to HDFS, place them in the local `./data` folder (created automatically), then use HDFS commands:
+
+1. **Place your files in the local data directory:**
+
+   Copy files to `./data/` (e.g., `./data/movies.csv`, `./data/logs.txt`)
+
+2. **Access the container:**
+
+   ```bash
+   docker-compose exec hadoop bash
+   ```
+
+3. **Upload from the mounted directory to HDFS:**
+
+   ```bash
+   hdfs dfs -put /data/movies.csv /your/hdfs/path/
+   hdfs dfs -mkdir /input
+   hdfs dfs -put /data/logs.txt /input/
+   ```
+
+4. **List files to confirm:**
+
+   ```bash
+   hdfs dfs -ls /your/hdfs/path/
+   ```
+
+**Note:** Files in `./data` are accessible at `/data` inside the container. Use `hdfs dfs -put /data/<filename> /hdfs/path/` to upload.
+
+---
+
 ## 🧹 Stopping & Cleaning Up
+
+Using Docker run:
 
 * Stop the container:
 
@@ -121,6 +163,14 @@ Now you can use Hadoop commands:
 
   ```bash
   docker rm hadoop
+  ```
+
+Using Docker Compose:
+
+* Stop and remove the container:
+
+  ```bash
+  docker-compose down
   ```
 
 * Remove volumes (⚠️ deletes stored data):
