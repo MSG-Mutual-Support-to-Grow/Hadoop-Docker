@@ -52,10 +52,11 @@ Then proceed to the Quick Start section below.
 
    ```bash
    docker run -d --name hadoop \
-     -p 9870:9870 -p 9000:9000 -p 9864:9864 \
-     -v hadoop_namenode:/hadoop/dfs/name \
-     -v hadoop_datanode:/hadoop/dfs/data \
-     ronnieallen/myhadoop
+  -p 9870:9870 -p 9000:9000 -p 9864:9864 \
+  -v hadoop_namenode:/hadoop/dfs/name \
+  -v hadoop_datanode:/hadoop/dfs/data \
+  -v $(pwd):/localfiles \
+  ronnieallen/myhadoop
    ```
 
    Or using Docker Compose (simpler):
