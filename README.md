@@ -11,8 +11,30 @@ Perfect for beginners, labs, and quick experimentation without installing Hadoop
 Make sure the following are installed on your system before running:
 
 * [Docker](https://docs.docker.com/get-docker/) (version **20+ recommended**)
+* [Git](https://git-scm.com/) (for cloning the repository if building from source)
 * At least **2 GB RAM free** for the container
-* Internet connection (to pull the image from DockerHub)
+* Internet connection (to pull the image from DockerHub or download the base image)
+
+---
+
+## 🔧 Building from Source (Optional)
+
+If you prefer to build the image locally (for customization, offline use, or contributing):
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/MSG-Mutual-Support-to-Grow/Hadoop-Docker.git
+   cd Hadoop-Docker
+   ```
+
+2. **Build the Docker image**
+
+   ```bash
+   docker build -t ronnieallen/myhadoop .
+   ```
+
+Then proceed to the Quick Start section below.
 
 ---
 

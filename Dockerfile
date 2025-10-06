@@ -1,6 +1,9 @@
 # Base Hadoop image
 FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
 
+# Ensure volume directories exist
+RUN mkdir -p /hadoop/dfs/name /hadoop/dfs/data
+
 # Set environment variables
 ENV CLUSTER_NAME=HadoopCluster
 ENV CORE_CONF_fs_defaultFS=hdfs://localhost:9000
